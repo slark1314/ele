@@ -10,7 +10,26 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    proxyTable: {          
+          '/v4': {
+              target: 'https://m.maizuo.com',
+              host: 'm.maizuo.com',
+              changeOrigin:true,
+              // pathRewrite: {
+              //     '^/v4/api': '/v4/api'
+              //   }
+          },
+          "/restapi":{
+            target:"https://www.ele.me",
+            host:"www.ele.me",
+            changeOrigin:true
+          }
+    },
+    /*
+            https://m.maizuo.com/v4/api/billboard/home?__t=1530347798272
+            https://m.maizuo.com/v4/api/film/now-playing?__t=1530347798282&page=1&count=5
+            https://m.maizuo.com/v4/api/film/coming-soon?__t=1530347798316&page=1&count=3
+     */
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST
@@ -23,7 +42,7 @@ module.exports = {
     // Use Eslint Loader?
     // If true, your code will be linted during bundling and
     // linting errors and warnings will be shown in the console.
-    useEslint: true,
+    useEslint: false,
     // If true, eslint errors and warnings will also be shown in the error overlay
     // in the browser.
     showEslintErrorsInOverlay: false,
